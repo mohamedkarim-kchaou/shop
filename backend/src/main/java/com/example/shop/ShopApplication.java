@@ -6,7 +6,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@OpenAPIDefinition(info = @Info(title = "Shop API", version = "1.0", description = "Shop Information"))
+@OpenAPIDefinition(
+    info = @Info(title = "Shop API", version = "1.0", description = "Shop Information"))
 public class ShopApplication {
   public static void main(String[] args) {
     SpringApplication.run(ShopApplication.class, args);
