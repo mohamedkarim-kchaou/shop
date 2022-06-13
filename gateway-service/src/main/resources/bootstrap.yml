@@ -1,0 +1,46 @@
+spring:
+  cloud:
+    config:
+      uri: http://config-server:8888
+    discovery:
+      enabled: true
+    gateway:
+      routes:
+        - id: customer-service-customers
+          uri: http://customer-service:9992
+          predicates:
+            - Path=/v1/customers/**
+        - id: customer-service-carts
+          uri: http://customer-service:9992
+          predicates:
+            - Path=/v1/carts/**
+        - id: product-service
+          uri: http://product-service:9990
+          predicates:
+            - Path=/v1/products/**
+        - id: order-service
+          uri: http://order-service:9991
+          predicates:
+            - Path=/v1/orders/**
+      discovery:
+        locator:
+          lower-case-service-id: true
+  application:
+    name: gateway-service
+server:
+  port: 8222
+eureka:
+  instance:
+    hostname: discovery-service
+  client:
+    service-url:
+      defaultZone: http://discovery-service:8761/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+logstash:
+  host: logstash
+  port: 5000
+  queue-size: 512

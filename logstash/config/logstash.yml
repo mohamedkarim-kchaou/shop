@@ -1,0 +1,7 @@
+pipeline:
+  batch:
+    delay: 50
+    size: 125
+xpack.monitoring.elasticsearch.password: logstash
+xpack.monitoring.elasticsearch.username: logstash
+xpack.monitoring.enabled: true

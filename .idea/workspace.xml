@@ -4,7 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ade34a2d-badb-47e3-8445-22a4c3247c6e" name="Changes" comment="" />
+    <list default="true" id="ade34a2d-badb-47e3-8445-22a4c3247c6e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/gateway-service/src/main/java/configurations/RoutingConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hystrix-dashboard/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/shop/commons/dto/AddressDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-commons/src/main/java/com/example/shopcommons/commons/dto/AddressDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/shop/commons/dto/CartDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-commons/src/main/java/com/example/shopcommons/commons/dto/CartDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/shop/commons/dto/CategoryDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-commons/src/main/java/com/example/shopcommons/commons/dto/CategoryDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/shop/commons/dto/CustomerDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-commons/src/main/java/com/example/shopcommons/commons/dto/CustomerDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/shop/commons/dto/OrderDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-commons/src/main/java/com/example/shopcommons/commons/dto/OrderDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/shop/commons/dto/OrderItemDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-commons/src/main/java/com/example/shopcommons/commons/dto/OrderItemDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/shop/commons/dto/PaymentDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-commons/src/main/java/com/example/shopcommons/commons/dto/PaymentDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/shop/commons/dto/ProductDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-commons/src/main/java/com/example/shopcommons/commons/dto/ProductDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/shop/commons/dto/ReviewDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-commons/src/main/java/com/example/shopcommons/commons/dto/ReviewDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/shop/commons/model/AbstractEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-commons/src/main/java/com/example/shopcommons/commons/model/AbstractEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/shop/commons/model/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-commons/src/main/java/com/example/shopcommons/commons/model/Address.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/shop/commons/services/addressService/AddressService.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-commons/src/main/java/com/example/shopcommons/commons/services/addressService/AddressService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/shop/commons/services/addressService/impl/AddressServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/shop-commons/src/main/java/com/example/shopcommons/commons/services/addressService/impl/AddressServiceImpl.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,23 +57,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "WebServerToolWindowFactoryState": "false",
-    "dart.analysis.tool.window.visible": "false",
-    "last_opened_file_path": "/home/karim/work/shop/backend",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "show.migrate.to.gradle.popup": "false",
-    "spring.configuration.checksum": "fb54f3c5992b96d001bb16e8e92d968d"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/karim/work/shop/backend&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;fb54f3c5992b96d001bb16e8e92d968d&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.example.shop.persistence.model" />
@@ -115,6 +135,8 @@
       <workItem from="1647232743586" duration="2733000" />
       <workItem from="1650208755096" duration="950000" />
       <workItem from="1650215354261" duration="3379000" />
+      <workItem from="1652211040748" duration="610000" />
+      <workItem from="1652644409016" duration="494000" />
     </task>
     <servers />
   </component>

@@ -1,0 +1,23 @@
+spring:
+  cloud:
+    config:
+      uri: http://config-server:8888
+  application:
+    name: hystrix-dashboard
+server:
+  port: 8988
+eureka:
+  instance:
+    hostname: discovery-service
+  client:
+    service-url:
+      defaultZone: http://discovery-service:8761/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+logstash:
+  host: logstash-service
+  port: 5000
+  queue-size: 512

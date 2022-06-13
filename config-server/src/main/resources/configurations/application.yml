@@ -1,0 +1,21 @@
+eureka:
+  instance:
+    hostname: discovery-service
+  client:
+    service-url:
+      defaultZone: http://discovery-service:8761/eureka/
+name:
+  value: shop
+spring:
+  cloud:
+    config:
+      override-system-properties: false
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+logstash:
+  host: logstash-service
+  port: 5000
+  queue-size: 512

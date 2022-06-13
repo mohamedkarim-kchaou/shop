@@ -1,0 +1,190 @@
+version: "3.7"
+
+services:
+  config-server:
+    build:
+      context: ../config-server
+    container_name: config-server
+    ports:
+      - 8888:8888
+    restart: always
+    networks:
+      - webnet
+  discovery-service:
+    build:
+      context: ../discovery-service
+    container_name: discovery-service
+    ports:
+      - 8761:8761
+    restart: always
+    depends_on:
+      - config-server
+    links:
+      - config-server
+    networks:
+      - webnet
+  gateway-service:
+    build:
+      context: ../gateway-service
+    container_name: gateway-service
+    ports:
+      - 8222:8222
+    restart: always
+    depends_on:
+      - config-server
+      - discovery-service
+    links:
+      - config-server
+      - discovery-service
+    networks:
+      - webnet
+  hystrix-dashboard:
+    build:
+      context: ../hystrix-dashboard
+    container_name: hystrix-dashboard
+    ports:
+      - 8988:8988
+    restart: always
+    depends_on:
+      - config-server
+      - discovery-service
+    links:
+      - config-server
+      - discovery-service
+    networks:
+      - webnet
+  elasticsearch:
+    container_name: elasticsearch
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.2.2
+    ports:
+      - 9200:9200
+    restart: always
+    environment:
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+      - discovery.type=single-node
+      - ${ELASTIC_PASSWORD:-}
+      - xpack.license.self_generated.type=trial
+      - xpack.security.enabled=false
+      - network.host=0.0.0.0
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+    networks:
+      - webnet
+  kibana-service:
+    container_name: kibana-service
+    image: docker.elastic.co/kibana/kibana:8.2.2
+    ports:
+      - 5601:5601
+    restart: always
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+      - elasticsearch.username=kibana
+      - elasticsearch.password=kibana
+      - ${KIBANA_SYSTEM_PASSWORD:-}
+      - monitoring.ui.container.elasticsearch.enabled=true
+      - server.name=kibana
+      - server.host=0.0.0.0
+    depends_on:
+      - elasticsearch
+    links:
+      - elasticsearch
+    networks:
+      - webnet
+  logstash:
+    image: docker.elastic.co/logstash/logstash:8.2.2
+    container_name: logstash
+    ports:
+      - 5044:5044
+      - 9600:9600
+      - 5000:5000
+    restart: always
+    volumes:
+      - type: bind
+        source: ../logstash/pipeline
+        target: /usr/share/logstash/pipeline
+    environment:
+      - ELASTICSEARCH_URL:https://elasticsearch:9200
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+      - LS_JAVA_OPTS=-Xms256m -Xmx256m
+      #- ${LOGSTASH_INTERNAL_PASSWORD:-}
+      - xpack.monitoring.elasticsearch.username=logstash
+      - xpack.monitoring.elasticsearch.password=logstash
+      - xpack.monitoring.enabled=true
+      - xpack.monitoring.elasticsearch.url=http://elasticsearch:9200
+      - xpack.management.elasticsearch.url=http://elasticsearch:9200
+    depends_on:
+      - elasticsearch
+    links:
+      - elasticsearch
+    networks:
+      - webnet
+  customer-service:
+    build:
+      context: ../customer-service
+    container_name: customer-service
+    ports:
+      - 9992:9992
+    restart: always
+    volumes:
+      - customer-service-db:/usr/share/customer-service-db
+    depends_on:
+      - config-server
+      - discovery-service
+      - logstash
+    links:
+      - config-server
+      - discovery-service
+      - logstash
+    networks:
+      - webnet
+  order-service:
+    build:
+      context: ../order-service
+    container_name: order-service
+    ports:
+      - 9991:9991
+    restart: always
+    volumes:
+      - customer-service-db:/usr/share/order-service-db
+    depends_on:
+      - config-server
+      - discovery-service
+      - logstash
+    links:
+      - config-server
+      - discovery-service
+      - logstash
+    networks:
+      - webnet
+  product-service:
+    build:
+      context: ../product-service
+    container_name: product-service
+    ports:
+      - 9990:9990
+    restart: always
+    volumes:
+      - customer-service-db:/usr/share/order-service-db
+    depends_on:
+      - config-server
+      - discovery-service
+      - logstash
+    links:
+      - config-server
+      - discovery-service
+      - logstash
+    networks:
+      - webnet
+
+  
+  
+      
+volumes:
+  elasticsearch-data:
+    driver: local
+  customer-service-db:
+    driver: local
+  order-service-db:
+    driver: local
+networks:
+  webnet:
